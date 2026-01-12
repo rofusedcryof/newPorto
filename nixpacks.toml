@@ -1,5 +1,11 @@
-[variables]
-    NIXPACKS_PHP_VERSION = '8.1'
-
 [phases.setup]
-    nixPkgs = ['...', 'php81', 'php81Packages.composer']
+nixPkgs = ['php81', 'php81Packages.composer', 'nodejs_18']
+
+[phases.install]
+cmds = ['composer install --frozen-lockfile --no-interaction']
+
+[phases.build]
+cmds = ['npm install && npm run build']
+
+[start]
+cmd = 'php artisan serve --host 0.0.0.0 --port $PORT'
