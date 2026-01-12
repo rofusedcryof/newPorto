@@ -2,7 +2,7 @@
 nixPkgs = ['php81', 'php81Packages.composer', 'nodejs_18']
 
 [phases.install]
-cmds = ['composer install --frozen-lockfile --no-interaction']
+cmds = ['composer install --optimize-autoloader --no-dev --no-interaction']
 
 [phases.build]
 cmds = ['npm install && npm run build']
